@@ -1,0 +1,47 @@
+<apex:page standardController="Expense__c" renderAs="pdf" extensions="ExpenseEXT" >
+  <!-- Page for Pdf generation-->
+  <!-- Begin Default Content REMOVE THIS -->
+  
+  <h1 style="color:#97a39d; text-align: center;">Invoice Details</h1>
+  <hr/>
+  <!-- 
+  <h1 style="color:; text-align: center;">Expense During {!Expense__c.Name} on {!Expense__c.Event_Date__c}</h1>
+  -->
+  <html>
+        <head/>
+        <body>
+            <table border="2"  width="600px" align="center" style="color:#229562" >
+              <tr>
+                 <td>TOTAL AMOUNT</td>
+                 <td>{!Expense__c.Amount__c}</td>
+              </tr>
+              <tr>
+                    <td>EVENT DATE</td>
+                    <td>{!Expense__c.Event_Date__c} </td>
+              </tr>
+              <tr>
+                    <td>EVENT</td>
+                    <td>{!Expense__c.Name}</td>
+               </tr> 
+               <tr>    
+                    <td>CONTRIBUTED AMOUNT</td>
+                    <td>{!Expense__c.Total_Contributed_Amount__c}</td>
+                    
+              </tr>
+              
+              <apex:repeat value="{!memExp}" var="i">
+                    <tr><td>{!i.Member__r.Name}</td>
+                    <td>{!i.Contribution_Amount__c}</td>
+                    </tr>
+            </apex:repeat>
+             
+              
+            
+            </table> 
+                
+        </body>
+    </html>
+    
+ 
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
